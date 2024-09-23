@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 class VakTest {
 
@@ -29,12 +30,10 @@ class VakTest {
     void opdracht5getCijferMetMeerdereToetsenGeeftGemiddeldeTerugVanTweeToetsen() {
         // Arrange
         Student testStudent = new Student();
-
-         Toets toets1 = new Toets();
-         toets1.studentMaaktToets(testStudent, 8);
-         Toets toets2 = new Toets();
-         toets2.studentMaaktToets(testStudent, 6);
-
+        Toets toets1 = new Toets();
+        toets1.studentMaaktToets(testStudent, 8);
+        Toets toets2 = new Toets();
+        toets2.studentMaaktToets(testStudent, 6);
         Vak vak = new Vak(List.of(toets1, toets2));
 
         // Act
@@ -49,8 +48,8 @@ class VakTest {
         // Arrange
         Student studentNietGemaakt = new Student();
         Student studentWelGemaakt = new Student();
-        Toets toets1 = new Toets();
-        toets1.studentMaaktToets(studentWelGemaakt, 8);
+        Toets toets1 = mock(Toets.class); // Maak een mock van Toets
+        toets1.studentMaaktToets(studentWelGemaakt, 8); // Dit heeft geen effect op de mock
         Vak vak = new Vak(List.of(toets1));
 
         // Act
@@ -65,7 +64,6 @@ class VakTest {
         // Arrange
         Student student1 = new Student();
         Student student2 = new Student();
-
         Toets toets1 = new Toets();
         toets1.studentMaaktToets(student1, 3);
         toets1.studentMaaktToets(student2, 10);

@@ -31,6 +31,6 @@ public class ToetsResultaatRegistratieDB {
 
     private boolean compareStudents(Student a, Student b) {
         // BUG ALERT, DO NOT FIX THE BUG, But fix your tests.
-        return !a.equals(b);
+        return !a.equals(b); // Dit is de bug: dit moet a.equals(b) zijn
     }
 }
